@@ -7,36 +7,22 @@
 	},
 	"item": [
 		{
-			"name": "Create user",
+			"name": "Create User",
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "username=Ilya",
-					"options": {
-						"raw": {
-							"language": "text"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/users?username=TestUser",
-					"protocol": "http",
+					"raw": "{{base_url}}/users?username=testuser",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
 						"users"
 					],
 					"query": [
 						{
 							"key": "username",
-							"value": "TestUser"
+							"value": "testuser"
 						}
 					]
 				}
@@ -44,29 +30,66 @@
 			"response": []
 		},
 		{
-			"name": "Create post",
+			"name": "Get User by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users/1?username=updateduser",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"1"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "updateduser"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{base_url}}/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "title=Test post&content=Test&author_id=1",
-					"options": {
-						"raw": {
-							"language": "text"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/posts?title=TestPost&content=Lorem&author_id=1",
-					"protocol": "http",
+					"raw": "{{base_url}}/posts?title=TestPost&content=Lorem&author_id=1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
 						"posts"
 					],
@@ -89,38 +112,70 @@
 			"response": []
 		},
 		{
-			"name": "Get all posts",
+			"name": "Get All Posts",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://127.0.0.1:8000/posts"
+				"url": "{{base_url}}/posts"
 			},
 			"response": []
 		},
 		{
-			"name": "Create comment",
+			"name": "Get Post by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/posts/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/posts/1?title=UpdatedTitle&content=UpdatedContent",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "UpdatedTitle"
+						},
+						{
+							"key": "content",
+							"value": "UpdatedContent"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{base_url}}/posts/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "post_id=1&author_id=1&content=FFF",
-					"options": {
-						"raw": {
-							"language": "text"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/comments?post_id=1&author_id=1&content=Ipsum",
-					"protocol": "http",
+					"raw": "{{base_url}}/comments?post_id=1&author_id=1&content=Ipsum",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
 						"comments"
 					],
@@ -143,20 +198,15 @@
 			"response": []
 		},
 		{
-			"name": "Get comments",
+			"name": "Get Comments by Post ID",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/comments?post_id=1",
-					"protocol": "http",
+					"raw": "{{base_url}}/comments?post_id=1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
 						"comments"
 					],
@@ -169,6 +219,64 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Comment by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/comments/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/comments/all"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Comment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/comments/1?content=UpdatedCommentContent",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"comments",
+						"1"
+					],
+					"query": [
+						{
+							"key": "content",
+							"value": "UpdatedCommentContent"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{base_url}}/comments/1"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "127.0.0.1:8000",
+			"type": "default"
 		}
 	]
 }
